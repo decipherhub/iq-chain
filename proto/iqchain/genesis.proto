@@ -1,0 +1,14 @@
+syntax = "proto3";
+package decipherhub.iqchain.iqchain;
+
+import "gogoproto/gogo.proto";
+import "iqchain/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/decipherhub/iq-chain/x/iqchain/types";
+
+// GenesisState defines the iqchain module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}
