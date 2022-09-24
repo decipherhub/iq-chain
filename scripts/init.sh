@@ -1,19 +1,27 @@
+set -x
 rm -rf ~/.iq-chain
 
 MONIKER=iq-chain-test
 CHAINID=iq-chain-1
 KEYRING=test
 
+MNEMONIC_FILE1=mnemonic1.txt
+MNEMONIC_FILE2=mnemonic2.txt
+MNEMONIC_FILE3=mnemonic3.txt
+MNEMONIC_FILE4=mnemonic4.txt
+MNEMONIC_FILE5=mnemonic5.txt
+MNEMONIC_FILE6=mnemonic6.txt
+
 iq-chaind init $MONIKER --chain-id $CHAINID
 
 iq-chaind config keyring-backend $KEYRING
 
-iq-chaind keys add genkey
-iq-chaind keys add relayer
-iq-chaind keys add boosik
-iq-chaind keys add sangyun
-iq-chaind keys add soojin
-iq-chaind keys add wujinger
+iq-chaind keys add genkey --recover < $MNEMONIC_FILE1
+iq-chaind keys add relayer --recover < $MNEMONIC_FILE2
+iq-chaind keys add boosik --recover < $MNEMONIC_FILE3
+iq-chaind keys add sangyun --recover < $MNEMONIC_FILE4
+iq-chaind keys add soojin --recover < $MNEMONIC_FILE5
+iq-chaind keys add wujinger --recover < $MNEMONIC_FILE6
 
 iq-chaind add-genesis-account $(iq-chaind keys show genkey -a) 10000000000uiq
 iq-chaind add-genesis-account $(iq-chaind keys show relayer -a) 10000000000uiq
